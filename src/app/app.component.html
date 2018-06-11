@@ -1,1 +1,43 @@
-<div>App Works</div>
+<div class="contents">
+<div class="wrapper">
+    <div *ngFor="let product of products" class="products">
+
+      <img class="product-image" [src]="product.imageUrl">
+      <div class="product-description" (click)='clicked(product)'>
+        <div class="header">{{ product.name }}</div>
+        <div class="meta">
+          <div class="product-sku">SKU #{{ product.sku }}</div>
+        </div>
+        <div class="description">
+          <div class="product-department">
+            <span *ngFor="let name of product.department; let i=index">
+              <a href="#">{{ product.name }}</a>
+              <span>{{i < (product.department.length-1) ? '>' : ''}}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="price-display">${{ product.price }}</div>
+    </div>
+    
+  </div>
+  <div *ngIf="currentProduct">
+      <img class="product-image" [src]="currentProduct.imageUrl">
+      <div class="product-description">
+        <div class="header">{{ currentProduct.name }}</div>
+        <div class="meta">
+          <div class="product-sku">SKU #{{ currentProduct.sku }}</div>
+        </div>
+        <div class="description">
+          <div class="product-department">
+            <span *ngFor="let name of currentProduct.department; let i=index">
+              <a href="#">{{ currentProduct.name }}</a>
+              <span>{{i < (currentProduct.department.length-1) ? '>' : ''}}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="price-display">${{ currentProduct.price }}</div>
+  </div>
+  
+</div>
